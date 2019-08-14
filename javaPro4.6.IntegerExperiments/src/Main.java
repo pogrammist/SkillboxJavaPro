@@ -8,7 +8,7 @@ public class Main {
 
     public static Integer sumDigits(Integer number) {
         //@TODO: write code here
-        String stringOfNumber = number.toString();
+        String stringOfNumber = Integer.toString(number);
         int countDigits = stringOfNumber.length();
         int sumOfdigits = 0;
         for (int i = 0; i < countDigits; i++){
