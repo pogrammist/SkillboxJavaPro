@@ -15,7 +15,7 @@ public class Loader {
             temperatures[i] = (float) Math.random() * (END_TEMPERATURE - START_TEMPERATURE) + START_TEMPERATURE;
             if (temperatures[i] > MIN_NORMAL_TEMPERATURE && temperatures[i] < MAX_NORMAL_TEMPERATURE) {
                 System.out.println("Пациент № " + (i + 1) + " с температурой " + temperatures[i] + " \"ЗДОРОВ\"");
-                countTruePatients += 1;
+                countTruePatients++;
             }
             sumTemperatures += temperatures[i];
             averageTemperature = sumTemperatures / (i + 1);
