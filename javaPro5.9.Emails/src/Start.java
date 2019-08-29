@@ -9,8 +9,11 @@ public class Start {
     private static String input;
     private static String[] words;
     private static final String EMAIL_PATTERN = "[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+    private static final String INSTRUCTION = "LIST - вывести список email\n" + "ADD [email] - добавить новый email";
+
 
     public static void main(String[] args) throws IOException {
+        System.out.println(INSTRUCTION);
         for (; ; ) {
             System.out.println("Введите команду");
             String input = new BufferedReader(new InputStreamReader(System.in)).readLine();
