@@ -8,8 +8,14 @@ public class Start {
     private static ArrayList<String> todoList = new ArrayList<>();
     private static String input;
     private static String[] words;
+    private static final String INSTRUCTION = "LIST - вывести список команд\n" +
+            "ADD [текст] - добавить новое дело\n" +
+            "ADD [номер] [текст] - добавить промежуточное дело\n" +
+            "EDIT [номер] [текст] - редактировать дело\n" +
+            "DELETE [номер] - удалить дело";
 
     public static void main(String[] args) throws IOException {
+        System.out.println(INSTRUCTION);
         for (; ; ) {
             System.out.println("Введите команду");
             String input = new BufferedReader(new InputStreamReader(System.in)).readLine();
