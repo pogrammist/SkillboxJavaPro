@@ -8,17 +8,22 @@ import java.util.TreeSet;
 
 public class Falcon9 {
 
-    private static final String chars[] = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
+    private static final String CHARS[] = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
     private static ArrayList<String> carNumbers = new ArrayList<>();
+    private static TreeSet<String> carNumbersTreeSet = new TreeSet<>();
+    private static HashSet<String> carNumbersHashSet = new HashSet<>();
 
     private Falcon9() {
-        for (int a = 0; a < chars.length; a++) {
+        for (int a = 0; a < CHARS.length; a++) {
             for (int num = 1; num < 1000; num++) {
                 for (int reg = 1; reg <= 95; reg++) {
-                    carNumbers.add(chars[a] + String.format("%03d", num) + chars[a] + chars[a] + String.format("%02d", reg) + "RUS");
+                    carNumbers.add(CHARS[a] + String.format("%03d", num) + CHARS[a] + CHARS[a] + String.format("%02d", reg) + "RUS");
                 }
             }
         }
+        Collections.shuffle(carNumbers);
+        carNumbersHashSet = new HashSet<>(carNumbers);
+        carNumbersTreeSet = new TreeSet(carNumbers);
     }
 
     public static void main(String[] args) throws IOException {
@@ -27,14 +32,14 @@ public class Falcon9 {
         for (; ; ) {
             BufferedReader inputNumber = new BufferedReader(new InputStreamReader(System.in));
             String currentNumber = inputNumber.readLine().trim().toUpperCase();
-            getTrueNumber(currentNumber);
+            getTrueNumberBruteForce(currentNumber);
             getTrueNumberBinarySearch(currentNumber);
             getTrueNumberHashSet(currentNumber);
             getTrueNumberTreeSet(currentNumber);
         }
     }
 
-    private static void getTrueNumber(String currentNumber) {
+    private static void getTrueNumberBruteForce(String currentNumber) {
         boolean find = false;
         long startTime = System.nanoTime();
         for (String item : carNumbers) {
@@ -61,7 +66,6 @@ public class Falcon9 {
     }
 
     private static void getTrueNumberHashSet(String currentNumber) {
-        HashSet<String> carNumbersHashSet = new HashSet<>(carNumbers);
         long startTime = System.nanoTime();
         if (carNumbersHashSet.contains(currentNumber)) {
             System.out.printf("true (%tL ms)\n", System.nanoTime() - startTime);
@@ -71,7 +75,6 @@ public class Falcon9 {
     }
 
     private static void getTrueNumberTreeSet(String currentNumber) {
-        TreeSet carNumbersTreeSet = new TreeSet(carNumbers);
         long startTime = System.nanoTime();
         if (carNumbersTreeSet.contains(currentNumber)) {
             System.out.printf("true (%tL ms)\n", System.nanoTime() - startTime);
