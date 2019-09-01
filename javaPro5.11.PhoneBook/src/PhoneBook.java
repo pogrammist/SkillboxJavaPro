@@ -7,7 +7,7 @@ import java.util.TreeMap;
 public class PhoneBook {
     private static TreeMap<String, String> phoneBook = new TreeMap<String, String>();
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private static final String TRUE_NUMBER = "\\d{11}";
+    private static final String TRUE_NUMBER = "\\d{11}\\d?";
     private static final String TRUE_NAME = "\\D+\\d?";
     private static final int MAX_NUMBER_LENGTH = 18;
     private static final String INSTRUCTION = "LIST - list subscribers";
