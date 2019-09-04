@@ -1,28 +1,28 @@
 package Bank;
 
 public class BankAccount {
-    private Double cash = 0.0;
+    protected Double cash = 0.0;
 
-    public void addCash(Double cash) {
-        if (cash <= 0) {
+    public void addCash(Double coin) {
+        if (coin <= 0) {
             System.out.println("Внесите положительное число монет");
         } else {
-            this.cash += cash;
-            System.out.println("Вы внесли " + this.cash + " монеты");
-            System.out.println(this.cash + " монеты поступили на счет: " + this);
+            System.out.println("Вы внесли " + coin + " монеты");
+            System.out.println(coin + " монеты поступили на счет: " + this);
+            this.cash += coin;
         }
     }
 
-    public void withdrawCash(Double cash) {
-        if (cash <= 0) {
+    public void withdrawCash(Double coin) {
+        if (coin <= 0) {
             System.out.println("Вы можете снять только положительное число монет" + this.cash);
-        } else if (this.cash >= cash) {
-            this.cash -= cash;
-            System.out.println("Вы сняли " + cash + " монет");
+        } else if (this.cash >= coin) {
+            this.cash -= coin;
+            System.out.println("Вы сняли " + coin + " монет");
             if (this.cash == 0) {
                 System.out.println("Ваш баланс: " + this.cash + " монет");
             }
-        } else if (this.cash < cash) {
+        } else if (this.cash < coin) {
             System.out.println("Не достаточно монет на счете. Вы не можете снять больше");
         }
     }
