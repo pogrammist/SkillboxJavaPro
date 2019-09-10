@@ -35,12 +35,6 @@ public class BankMakeMoney {
             "CLOSE ACCOUNT - закрыть счет";
 
     public static void main(String[] args) throws IOException {
-        clientList.add(new PhysicalClient());
-
-        clientList.add(new IndividualClient());
-
-        clientList.add(new LegalClient());
-
         System.out.println(INSTRUCTION);
         for (; ; ) {
             System.out.println("Введите команду");
@@ -261,7 +255,7 @@ public class BankMakeMoney {
         } else if (words[1].matches("\\d+")
                 && words.length == 2
                 && currentAccount instanceof DepositAccount) {
-            System.out.println("Вы указали дебетовый счет. Команда WITHDRAW не требует третий аргумент - дата завершения депозита");
+            System.out.println("Вы указали дебетовый счет. Команда WITHDRAW требует третий аргумент - дата завершения депозита");
 
         } else if (words[1].matches("\\d+")
                 && LocalDate.parse(words[2]).isSupported(ChronoField.EPOCH_DAY)
