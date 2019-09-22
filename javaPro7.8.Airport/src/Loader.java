@@ -1,13 +1,16 @@
 import com.skillbox.airport.Airport;
 import com.skillbox.airport.Flight;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Loader {
     public static void main(String[] args) {
         Date currentDate = new Date();
-        Date afterTwoHour = new Date();
-        afterTwoHour.setHours(currentDate.getHours() + 2);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR_OF_DAY, 2);
+        Date afterTwoHour = calendar.getTime();
 
         Airport airport = Airport.getInstance();
         airport.getTerminals()
