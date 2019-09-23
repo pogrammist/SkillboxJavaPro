@@ -35,7 +35,7 @@ public class Main {
                 } else {
                     System.out.println(commandError);
                 }
-            } catch (IllegalArgumentException exception) {
+            } catch (IllegalArgumentException | InputStringException exception) {
                 System.out.println(exception.getMessage());
             }
         }
