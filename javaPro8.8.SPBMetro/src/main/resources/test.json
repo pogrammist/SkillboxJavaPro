@@ -1,0 +1,143 @@
+{
+  "stations": {
+    "1": [
+      "x0",
+      "x1",
+      "x2",
+      "x3",
+      "x4",
+      "x5",
+      "x6"
+    ],
+    "2": [
+      "y6",
+      "y7",
+      "y8",
+      "y9",
+      "y10",
+      "y11",
+      "y12"
+    ],
+    "3": [
+      "z2",
+      "z3",
+      "z4",
+      "z5",
+      "z6",
+      "z7",
+      "z8"
+    ],
+    "4": [
+      "u4",
+      "u5",
+      "u6",
+      "u7",
+      "u8",
+      "u9",
+      "u10 "
+    ],
+    "5": [
+      "q0",
+      "q2",
+      "q4",
+      "q6"
+    ]
+  },
+  "connections": [
+    [
+      {
+        "line": 1,
+        "station": "x0"
+      },
+      {
+        "line": 2,
+        "station": "y12"
+      },
+      {
+        "line": 5,
+        "station": "q0"
+      }
+    ],
+    [
+      {
+        "line": 1,
+        "station": "x6"
+      },
+      {
+        "line": 2,
+        "station": "y6"
+      },
+      {
+        "line": 5,
+        "station": "q6"
+      }
+    ],
+    [
+      {
+        "line": 1,
+        "station": "x2"
+      },
+      {
+        "line": 3,
+        "station": "z2"
+      }
+    ],
+    [
+      {
+        "line": 2,
+        "station": "y8"
+      },
+      {
+        "line": 3,
+        "station": "z8"
+      }
+    ],
+    [
+      {
+        "line": 1,
+        "station": "x4"
+      },
+      {
+        "line": 4,
+        "station": "u4"
+      }
+    ],
+    [
+      {
+        "line": 2,
+        "station": "y10"
+      },
+      {
+        "line": 4,
+        "station": "u10"
+      }
+    ]
+  ],
+  "lines": [
+    {
+      "number": 1,
+      "name": "x1-x6",
+      "color": "red"
+    },
+    {
+      "number": 2,
+      "name": "y6-y12",
+      "color": "blue"
+    },
+    {
+      "number": 3,
+      "name": "z2-z8",
+      "color": "green"
+    },
+    {
+      "number": 4,
+      "name": "u4-u10",
+      "color": "orange"
+    },
+    {
+      "number": 5,
+      "name": "q0-q6",
+      "color": "violet"
+    }
+  ]
+}
