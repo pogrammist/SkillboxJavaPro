@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static String dataFile = "src/main/resources/map.json";
+    private static String dataFile = "src/main/resources/metromap2019fixed.json";
     private static Scanner scanner;
 
     private static StationIndex stationIndex;

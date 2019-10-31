@@ -102,12 +102,12 @@ public class RouteCalculator {
         return route;
     }
 
-    private boolean isConnected(Station station1, Station station2) {
+    boolean isConnected(Station station1, Station station2) {
         Set<Station> connected = stationIndex.getConnectedStations(station1);
         return connected.contains(station2);
     }
 
-    private List<Station> getRouteViaConnectedLine(Station from, Station to) {
+    List<Station> getRouteViaConnectedLine(Station from, Station to) {
         Set<Station> fromConnected = stationIndex.getConnectedStations(from);
         Set<Station> toConnected = stationIndex.getConnectedStations(to);
         for (Station srcStation : fromConnected) {
