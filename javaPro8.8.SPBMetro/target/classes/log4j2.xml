@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="stationNotFound" fileName="logs/stationNotFound.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <MarkerFilter marker="STATION_NOT_FOUND" />
+            </Filters>
+        </File>
+
+        <File name="routeBuild" fileName="logs/routeBuild.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <MarkerFilter marker="ROUTE_BUILD" />
+            </Filters>
+        </File>
+
+        <File name="errors" fileName="logs/errors.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="Console" level="all"/>
+            <appender-ref ref="stationNotFound" level="info"/>
+            <appender-ref ref="routeBuild" level="info"/>
+            <appender-ref ref="errors" level="error"/>
+        </root>
+    </loggers>
+</configuration>

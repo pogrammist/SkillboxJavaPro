@@ -1,5 +1,9 @@
 import core.Line;
 import core.Station;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,6 +15,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    private static final Logger LOGGER = LogManager.getRootLogger();;
+    private static final Marker ROUTE_BUILD = MarkerManager.getMarker("ROUTE_BUILD");
+    private static final Marker STATION_NOT_FOUND = MarkerManager.getMarker("STATION_NOT_FOUND");
+
     private static String dataFile = "src/main/resources/metromap2019fixed.json";
     private static Scanner scanner;
 
@@ -22,15 +30,21 @@ public class Main {
         System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
         scanner = new Scanner(System.in);
         for (; ; ) {
-            Station from = takeStation("Введите станцию отправления:");
-            Station to = takeStation("Введите станцию назначения:");
+            try {
+                Station from = takeStation("Введите станцию отправления:");
+                Station to = takeStation("Введите станцию назначения:");
 
-            List<Station> route = calculator.getShortestRoute(from, to);
-            System.out.println("Маршрут:");
-            printRoute(route);
+                LOGGER.info(ROUTE_BUILD,"Route build: " + from + " -> " + to);
 
-            System.out.println("Длительность: " +
-                    RouteCalculator.calculateDuration(route) + " минут");
+                List<Station> route = calculator.getShortestRoute(from, to);
+                System.out.println("Маршрут:");
+                printRoute(route);
+
+                System.out.println("Длительность: " +
+                        RouteCalculator.calculateDuration(route) + " минут");
+            } catch (Exception e) {
+                LOGGER.error(e);
+            }
         }
     }
 
@@ -63,6 +77,7 @@ public class Main {
             if (station != null) {
                 return station;
             }
+            LOGGER.info(STATION_NOT_FOUND,"Station not found: " + line);
             System.out.println("Станция не найдена :(");
         }
     }
